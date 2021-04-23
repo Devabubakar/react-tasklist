@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import './index.css';
+import TaskList from './components/Task-list.component/TaskList';
+import Form from './components/Form-input.component/ Form';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      tasks: [],
+      item: '',
+    };
+  }
+
+  onDelete = async (task) => {
+    console.log(task);
+  };
+  
+
+  componentDidMount() {}
+  handleChange = (event) => {
+    this.setState({ item: event.target.value });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const addedTasks = [...this.state.tasks, this.state.item];
+    if (this.state.item.length > 0) {
+      this.setState({
+        tasks: addedTasks,
+      });
+    }
+
+    this.setState({
+      item: '',
+    });
+  };
+
+  render() {
+    return (
+      <div className='container '>
+        <div className='add-form'>
+          <form action='' onSubmit={this.handleSubmit}>
+            <Form
+              type='text'
+              handleChange={this.handleChange}
+              value={this.state.item}
+              name='addItem'
+            />
+          </form>
+        </div>
+        <TaskList tasks={this.state.tasks} onDelete={this.onDelete} />
+      </div>
+    );
+  }
 }
-
-export default App;
