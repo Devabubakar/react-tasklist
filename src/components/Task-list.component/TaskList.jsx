@@ -6,9 +6,7 @@ import TaskItem from '../Task-item.component/TaskItem';
 const TaskList = (props) => {
   return (
     <div className=''>
-      {props.tasks.map((task,index) => (
-        <TaskItem key={index} task={task} />
-      ))}
+      
     </div>
   );
 };
