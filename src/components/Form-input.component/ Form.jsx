@@ -1,5 +1,5 @@
 import React from 'react';
-import './Form.styles.css';
+
 import { connect } from 'react-redux';
 import { addTask } from '../../redux/task/task.actions';
 
@@ -36,7 +36,6 @@ class Form extends React.Component {
           <input
             type='text'
             name='taskItem'
-            ref='taskRef'
             value={this.state.taskItem}
             onChange={this.handleChange}
           />

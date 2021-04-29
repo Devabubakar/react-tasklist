@@ -1,5 +1,5 @@
 import { taskTypes } from './task.types';
-import { addItem } from './task.utils';
+import { addItem, removeItem } from './task.utils';
 
 const INITIAL_STATE = {
   taskItems: [],
@@ -12,6 +12,11 @@ const taskReducer = (state = INITIAL_STATE, action) => {
         ...state,
         taskItems: [...state.taskItems,action.payload]
       };
+    case taskTypes.REMOVE_TASK :
+      return {
+        ...state,
+        taskItems : state.taskItems.filter(taskItem => taskItem !== action.payload)
+      }
     default:
       return state;
   }
