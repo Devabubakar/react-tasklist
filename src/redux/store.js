@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === "development"){
 
 
 
-export const store = createStore(persistedReducer, applyMiddleware(middleware));
+export const store = createStore(persistedReducer, applyMiddleware(...middleware));
 export let persistor = persistStore(store);
 
 
