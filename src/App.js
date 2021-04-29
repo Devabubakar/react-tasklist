@@ -1,15 +1,26 @@
-import React, { Component } from 'react'
-import './App.css'
-import  Tasklist from './components/Task-list.component/TaskList'
+import React from 'react';
+import './App.css';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { taskSelector } from './redux/task/task.selector';
+import TaskList from './components/Task-list.component/TaskList';
+import Form from './components/Form-input.component/ Form';
 
-export default class App extends Component {
-  
-  render() {
-    return (
-      <div>
-        <Tasklist />
+const App = ({ tasks }) => {
+  return (
+    <div className='container'>
+      
         
-      </div>
-    )
-  }
-}
+          <Form  />
+       
+      
+      <TaskList tasks={tasks} />
+    </div>
+  );
+};
+
+const mapStateToProps = createStructuredSelector({
+  tasks: taskSelector,
+});
+
+export default connect(mapStateToProps)(App);
