@@ -6,7 +6,7 @@ import persistedReducer from './root.reducer';
 
 
 
-const store = createStore(persistedReducer, applyMiddleware(logger));
-let persistor = persistStore(store);
+export const store = createStore(persistedReducer, applyMiddleware(logger));
+export let persistor = persistStore(store);
 
-export default (persistor, store);
+
