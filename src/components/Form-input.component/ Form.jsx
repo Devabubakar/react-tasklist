@@ -12,9 +12,11 @@ class Form extends React.Component {
   }
 
   handleChange = (e) => {
-    const { name, value } = e.target;
+    const taskItem = e.target.value;
 
-    this.setState({ [name]: value });
+    this.setState({
+      taskItem,
+    });
   };
 
   handleSubmit = async (event) => {
@@ -22,7 +24,10 @@ class Form extends React.Component {
     try {
       await this.props.addTask(this.state.taskItem);
       this.setState({
-        taskItem: '',
+        
+          taskItem: '',
+          createdAt: '',
+        
       });
     } catch (error) {
       console.log(error);
