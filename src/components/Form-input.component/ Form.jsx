@@ -12,8 +12,8 @@ class Form extends React.Component {
     
   }
 
-  handleChange = (e) => {
-    const taskItem = e.target.value;
+  handleChange = (event) => {
+    const taskItem = event.target.value;
 
     this.setState({
       taskItem,
